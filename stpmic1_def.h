@@ -118,10 +118,13 @@
 
 // STPMIC_BUCK1_MAIN_CR - BUCK1 MAIN mode control registers
 //
-#define STPMIC_BUCK1_MAIN_CR			0x20	//BUCK1 MAIN mode control register
-#define STPMIC_BUCK1_MAIN_ENA			0U		//Buck enable bit
-#define STPMIC_BUCK1_MAIN_PREG_MODE		1U		//Select high power or low power regulation mode
-#define STPMIC_BUCK1_MAIN_VOUT			2U		//Buck output voltage setting.
+#define STPMIC_BUCK1_MAIN_CR				0x20	//BUCK1 MAIN mode control register
+#define STPMIC_BUCK1_MAIN_ENA				0U		//Buck enable bit
+#define STPMIC_BUCK1_MAIN_ENA_Mask			(1U << STPMIC_BUCK1_MAIN_ENA)
+#define STPMIC_BUCK1_MAIN_PREG_MODE			1U		//Select high power or low power regulation mode
+#define STPMIC_BUCK1_MAIN_PREG_MODE_Mask	(1U << STPMIC_BUCK1_MAIN_PREG_MODE)
+#define STPMIC_BUCK1_MAIN_VOUT				2U		//Buck output voltage setting.
+#define STPMIC_BUCK1_MAIN_VOUT_Mask			(1U << STPMIC_BUCK1_MAIN_VOUT)
 
 // Buck1 VOUT Register Presets
 //
@@ -192,10 +195,13 @@
 
 // STPMIC_BUCK2_MAIN_CR - BUCK2 MAIN mode control register
 //
-#define STPMIC_BUCK2_MAIN_CR			0x21	//BUCK2 MAIN mode control register
-#define STPMIC_BUCK2_MAIN_ENA			0U		//Buck enable bit
-#define STPMIC_BUCK2_MAIN_PREG_MODE		1U		//Select high power or low power regulation mode
-#define STPMIC_BUCK2_MAIN_VOUT			2U		//Buck output voltage setting.
+#define STPMIC_BUCK2_MAIN_CR				0x21	//BUCK2 MAIN mode control register
+#define STPMIC_BUCK2_MAIN_ENA				0U		//Buck enable bit
+#define STPMIC_BUCK2_MAIN_ENA_Mask			(1U << STPMIC_BUCK2_MAIN_ENA)
+#define STPMIC_BUCK2_MAIN_PREG_MODE			1U		//Select high power or low power regulation mode
+#define STPMIC_BUCK2_MAIN_PREG_MODE_Mask	(1U << STPMIC_BUCK2_MAIN_PREG_MODE)
+#define STPMIC_BUCK2_MAIN_VOUT				2U		//Buck output voltage setting.
+#define STPMIC_BUCK2_MAIN_VOUT_Mask			(1U << STPMIC_BUCK2_MAIN_VOUT)
 
 #define STPMIC_BUCK2_PRESET_0		0x00	// 1V
 #define STPMIC_BUCK2_PRESET_1		0x01	// 1V
@@ -264,12 +270,16 @@
 
 // STPMIC_BUCK3_MAIN_CR - BUCK3 MAIN mode control register
 //
-#define STPMIC_BUCK3_MAIN_CR			0x22	//BUCK3 MAIN mode control register
-#define STPMIC_BUCK3_MAIN_ENA			0U		//Buck enable bit
-#define STPMIC_BUCK3_MAIN_PREG_MODE		1U		//Select high power or low power regulation mode
-#define STPMIC_BUCK3_MAIN_VOUT			2U		//Buck output voltage setting.
+#define STPMIC_BUCK3_MAIN_CR				0x22	//BUCK3 MAIN mode control register
+#define STPMIC_BUCK3_MAIN_ENA				0U		//Buck enable bit
+#define STPMIC_BUCK3_MAIN_ENA_Mask			(1U << STPMIC_BUCK3_MAIN_ENA)
+#define STPMIC_BUCK3_MAIN_PREG_MODE			1U		//Select high power or low power regulation mode
+#define STPMIC_BUCK3_MAIN_PREG_MODE_Mask	(1U << STPMIC_BUCK3_MAIN_PREG_MODE)
+#define STPMIC_BUCK3_MAIN_VOUT				2U		//Buck output voltage setting.
+#define STPMIC_BUCK3_MAIN_VOUT_Mask			(1U << STPMIC_BUCK3_MAIN_VOUT)
 
 #define STPMIC_BUCK3_PRESET_0		0x00	// 1V
+
 #define STPMIC_BUCK3_PRESET_1		0x01	// 1V
 #define STPMIC_BUCK3_PRESET_2		0x02	// 1V
 #define STPMIC_BUCK3_PRESET_3		0x03	// 1V
@@ -325,21 +335,24 @@
 #define STPMIC_BUCK3_PRESET_53		0x35	// 3.2V
 #define STPMIC_BUCK3_PRESET_54		0x36	// 3.3V
 #define STPMIC_BUCK3_PRESET_55		0x37	// 3.4V
-#define STPMIC_BUCK3_PRESET_56		0x38	// 3.5V
-#define STPMIC_BUCK3_PRESET_57		0x39	// 3.6V
-#define STPMIC_BUCK3_PRESET_58		0x3A	// 3.7V
-#define STPMIC_BUCK3_PRESET_59		0x3B	// 3.8V
-#define STPMIC_BUCK3_PRESET_60		0x3C	// 3.9V
-#define STPMIC_BUCK3_PRESET_61		0x3D	// 3.9V
-#define STPMIC_BUCK3_PRESET_62		0x3E	// 3.9V
-#define STPMIC_BUCK3_PRESET_63		0x3F	// 3.9V
+#define STPMIC_BUCK3_PRESET_56		0x38	// 3.4V
+#define STPMIC_BUCK3_PRESET_57		0x39	// 3.4V
+#define STPMIC_BUCK3_PRESET_58		0x3A	// 3.4V
+#define STPMIC_BUCK3_PRESET_59		0x3B	// 3.4V
+#define STPMIC_BUCK3_PRESET_60		0x3C	// 3.4V
+#define STPMIC_BUCK3_PRESET_61		0x3D	// 3.4V
+#define STPMIC_BUCK3_PRESET_62		0x3E	// 3.4V
+#define STPMIC_BUCK3_PRESET_63		0x3F	// 3.4V
 
 // STPMIC_BUCK4_MAIN_CR - BUCK4 MAIN mode control register
 //
-#define STPMIC_BUCK4_MAIN_CR			0x23	//BUCK4 MAIN mode control register
-#define STPMIC_BUCK4_MAIN_ENA			0U		//Buck enable bit
-#define STPMIC_BUCK4_MAIN_PREG_MODE		1U		//Select high power or low power regulation mode
-#define STPMIC_BUCK4_MAIN_VOUT			2U		//Buck output voltage setting.
+#define STPMIC_BUCK4_MAIN_CR				0x23	//BUCK4 MAIN mode control register
+#define STPMIC_BUCK4_MAIN_ENA				0U		//Buck enable bit
+#define STPMIC_BUCK4_MAIN_ENA_Mask			(1U << STPMIC_BUCK4_MAIN_ENA)
+#define STPMIC_BUCK4_MAIN_PREG_MODE			1U		//Select high power or low power regulation mode
+#define STPMIC_BUCK4_MAIN_PREG_MODE_Mask	(1U << STPMIC_BUCK4_MAIN_PREG_MODE)
+#define STPMIC_BUCK4_MAIN_VOUT				2U		//Buck output voltage setting.
+#define STPMIC_BUCK4_MAIN_VOUT_Mask			(1U << STPMIC_BUCK4_MAIN_VOUT)
 
 
 #define STPMIC_BUCK4_PRESET_0		0x00	// 0.6V
@@ -412,6 +425,7 @@
 //
 #define STPMIC_REFDDR_MAIN_CR			0x24	//REFDDR MAIN mode control register
 #define STPMIC_REFDDR_MAIN_ENA			0U		//VREF_DDR enable bit
+#define STPMIC_REFDDR_MAIN_ENA_Mask		(1U << STPMIC_REFDDR_MAIN_ENA)
 
 // STPMIC_LDO1_MAIN_CR - LDO1 MAIN mode control registers
 //
@@ -690,8 +704,11 @@
 //
 #define STPMIC_BST_SW_CR				0x40	//Boost/switch control register
 #define STPMIC_BST_SW_BST_ON			0U		//BOOST enable bit
+#define STPMIC_BST_SW_BST_ON_Mask		(1U << STPMIC_BST_SW_BST_ON)
 #define STPMIC_BST_SW_VBUSOTG_ON 		1U		//PWR_USB_SW switch enable
+#define STPMIC_BST_SW_VBUSOTG_ON_Mask	(1U << STPMIC_BST_SW_VBUSOTG_ON)
 #define STPMIC_BST_SW_SWOUT_ON 			2U		//PWR_SW switch enable bit
+#define STPMIC_BST_SW_SWOUT_ON_Mask		(1U << STPMIC_BST_SW_SWOUT_ON)
 #define STPMIC_BST_SW_OCP_SWOUT_LIM 	3U		//Overcurrent limit protection of PWR_SW switch
 #define STPMIC_BST_SW_VBUSOTG_PD 		4U		//PWR_USB_SW pull-down activation
 #define STPMIC_BST_SW_SWOUT_PD 			5U		//SWOUT (PWR_SW) pull-down activation
@@ -699,12 +716,6 @@
 
 
 
-// LDO control registers
-
-
-
-// LDO VOUT Register Presets
-#define STPMIC_LDO_VOUT_3_3V	0x7D	//Set LDO to 3.3V out. LDO3 - VOUT 2/2 (sink/source)
 
 
 

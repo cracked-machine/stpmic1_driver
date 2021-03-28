@@ -55,7 +55,7 @@ int stpmic1_i2c_connect(I2C_HandleTypeDef *hi2c) {
     printf("Scanning I2C bus...\n");
     char msg[64];
     int DeviceFound=0;
-    char notFound[160];
+    //char notFound[160];
     HAL_StatusTypeDef res;
     for(uint16_t i = 0; i < 128; i++) {
         res = HAL_I2C_IsDeviceReady(stpmic1_i2c, i << 1, 1, 10);
@@ -63,6 +63,7 @@ int stpmic1_i2c_connect(I2C_HandleTypeDef *hi2c) {
 
             snprintf(msg, sizeof(msg), "0x%02X", i);
             printf("Found %s\n", msg);
+            stpmic1_print_hal_status(res, "");
             DeviceFound=1;
             stpmic1_dev_addr = i;
             //ssd1306_SetI2CAddress(i);
@@ -73,9 +74,7 @@ int stpmic1_i2c_connect(I2C_HandleTypeDef *hi2c) {
     }
     if(!DeviceFound)
     {
-
-    	printf("%s\n", notFound);
-    	printf("No device found\n");
+    	stpmic1_print_hal_status(res, "No device found: ");
     	return -1;
     }
     return -1;
