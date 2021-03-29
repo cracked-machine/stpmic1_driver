@@ -52,18 +52,18 @@ int main(void)
   // AND
   // Enable the PWR_SW power switch - J7 connected to SWIN (requires ext power source on J3).
   stpmic1_set_register_value(STPMIC_BST_SW_CR, (STPMIC_BST_SW_VBUSOTG_ON_Mask) | (STPMIC_BST_SW_BST_ON_Mask) | (STPMIC_BST_SW_SWOUT_ON_Mask));
-
+  
   // Enable BUCK1 full 1.5V output
-  stpmic1_set_register_value(STPMIC_BUCK1_MAIN_CR, ((STPMIC_BUCK1_MAIN_ENA_Mask) | (STPMIC_BUCK1_PRESET_63 << STPMIC_BUCK1_MAIN_VOUT)));
+  stpmic1_set_register_value(STPMIC_BUCK1_MAIN_CR, (STPMIC_BUCK1_MAIN_ENA_Mask | STPMIC_BUCK1_PRESET_63_Mask));
 
   // Enable BUCK2 full 1.5V output
-  stpmic1_set_register_value(STPMIC_BUCK2_MAIN_CR, ((STPMIC_BUCK2_MAIN_ENA_Mask) | (STPMIC_BUCK2_PRESET_63 << STPMIC_BUCK2_MAIN_VOUT)));
+  stpmic1_set_register_value(STPMIC_BUCK2_MAIN_CR, (STPMIC_BUCK2_MAIN_ENA_Mask | STPMIC_BUCK2_PRESET_63_Mask));
 
   // Enable BUCK3 full 3.4V output
-  stpmic1_set_register_value(STPMIC_BUCK3_MAIN_CR, ((STPMIC_BUCK3_MAIN_ENA_Mask) | (STPMIC_BUCK3_PRESET_63 << STPMIC_BUCK3_MAIN_VOUT)));
+  stpmic1_set_register_value(STPMIC_BUCK3_MAIN_CR, (STPMIC_BUCK3_MAIN_ENA_Mask | STPMIC_BUCK3_PRESET_63_Mask));
 
   // Enable BUCK4 full 3.9V output
-  stpmic1_set_register_value(STPMIC_BUCK4_MAIN_CR, ((STPMIC_BUCK4_MAIN_ENA_Mask) | (STPMIC_BUCK4_PRESET_63 << STPMIC_BUCK4_MAIN_VOUT)));
+  stpmic1_set_register_value(STPMIC_BUCK4_MAIN_CR, (STPMIC_BUCK4_MAIN_ENA_Mask | STPMIC_BUCK4_PRESET_63_Mask));
   
   // Enable VREFDDR output
   stpmic1_set_register_value(STPMIC_REFDDR_MAIN_CR, STPMIC_REFDDR_MAIN_ENA_Mask);
