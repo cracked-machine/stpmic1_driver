@@ -1,6 +1,14 @@
 ### STPMIC1 Driver for STM32 Microcontrollers
 
+#### Intro
+
 https://www.st.com/resource/en/datasheet/stpmic1.pdf
+
+#### Hardware
+
+You can test this with the ST's STEVAL-PMIC1K1 or with custom board [here](https://github.com/cracked-machine/PMIC_Devkits)
+
+#### Example usage
 
 Abridged example. Use CubeIDE/CubeMX to setup your project.
 
