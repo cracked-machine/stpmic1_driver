@@ -30,22 +30,43 @@ int main(void)
   // setup the driver
   stpmic1_i2c_connect(&hi2c1);
 
-  // store the read register values
+  // store the read register value
   uint8_t data = 0;
 
   // get the chip version
   stpmic1_get_register_value(STPMIC_VERSION_SR, &data);
   
-  // set the BUCK regulators voltage output to maximum value
-  stpmic1_set_register_value(STPMIC_LDO1_MAIN_CR, STPMIC_LDO1_MAIN_ENA | STPMIC_LDO1_PRESET_31);	// 3.3V
-  stpmic1_set_register_value(STPMIC_LDO2_MAIN_CR, STPMIC_LDO2_MAIN_ENA | STPMIC_LDO2_PRESET_31);	// 3.3V
-  stpmic1_set_register_value(STPMIC_LDO5_MAIN_CR, STPMIC_LDO5_MAIN_ENA | STPMIC_LDO5_PRESET_31);	// 3.9V
-  stpmic1_set_register_value(STPMIC_LDO6_MAIN_CR, STPMIC_LDO6_MAIN_ENA | STPMIC_LDO6_PRESET_31);	// 3.3V
+  // Enable the VBOOST regulator (5.2V fixed output)
+  stpmic1_set_register_value(STPMIC_BST_SW_CR, (STPMIC_BST_SW_BST_ON_Mask));
 
-  stpmic1_set_register_value(STPMIC_BUCK1_MAIN_CR, STPMIC_BUCK1_MAIN_ENA | STPMIC_BUCK1_PRESET_63);	// 1.5V
-  stpmic1_set_register_value(STPMIC_BUCK2_MAIN_CR, STPMIC_BUCK2_MAIN_ENA | STPMIC_BUCK2_PRESET_63);	// 1.5V
-  stpmic1_set_register_value(STPMIC_BUCK3_MAIN_CR, STPMIC_BUCK3_MAIN_ENA | STPMIC_BUCK3_PRESET_63);	// 3.9V
-  stpmic1_set_register_value(STPMIC_BUCK4_MAIN_CR, STPMIC_BUCK4_MAIN_ENA | STPMIC_BUCK4_PRESET_63);	// 3.9V
+  // Enable the PWR_USB (OTG) power switch - internally connected to boost regulator.
+  stpmic1_set_register_value(STPMIC_BST_SW_CR, (STPMIC_BST_SW_BST_ON_Mask) | (STPMIC_BST_SW_VBUSOTG_ON_Mask));
+
+  // Enable the PWR_SW power switch - J7 connected to SWIN (requires ext power source on J3).
+  stpmic1_set_register_value(STPMIC_BST_SW_CR, STPMIC_BST_SW_SWOUT_ON_Mask);
+
+  // Enable the PWR_SW power switch - J7 connected to VBOOST.
+  stpmic1_set_register_value(STPMIC_BST_SW_CR, (STPMIC_BST_SW_BST_ON_Mask) | (STPMIC_BST_SW_SWOUT_ON_Mask));
+
+  // Enable the PWR_USB (OTG) power switch - internally connected to boost regulator.
+  // AND
+  // Enable the PWR_SW power switch - J7 connected to SWIN (requires ext power source on J3).
+  stpmic1_set_register_value(STPMIC_BST_SW_CR, (STPMIC_BST_SW_VBUSOTG_ON_Mask) | (STPMIC_BST_SW_BST_ON_Mask) | (STPMIC_BST_SW_SWOUT_ON_Mask));
+
+  // Enable BUCK1 full 1.5V output
+  stpmic1_set_register_value(STPMIC_BUCK1_MAIN_CR, ((STPMIC_BUCK1_MAIN_ENA_Mask) | (STPMIC_BUCK1_PRESET_63 << STPMIC_BUCK1_MAIN_VOUT)));
+
+  // Enable BUCK2 full 1.5V output
+  stpmic1_set_register_value(STPMIC_BUCK2_MAIN_CR, ((STPMIC_BUCK2_MAIN_ENA_Mask) | (STPMIC_BUCK2_PRESET_63 << STPMIC_BUCK2_MAIN_VOUT)));
+
+  // Enable BUCK3 full 3.4V output
+  stpmic1_set_register_value(STPMIC_BUCK3_MAIN_CR, ((STPMIC_BUCK3_MAIN_ENA_Mask) | (STPMIC_BUCK3_PRESET_63 << STPMIC_BUCK3_MAIN_VOUT)));
+
+  // Enable BUCK4 full 3.9V output
+  stpmic1_set_register_value(STPMIC_BUCK4_MAIN_CR, ((STPMIC_BUCK4_MAIN_ENA_Mask) | (STPMIC_BUCK4_PRESET_63 << STPMIC_BUCK4_MAIN_VOUT)));
+  
+  // Enable VREFDDR output
+  stpmic1_set_register_value(STPMIC_REFDDR_MAIN_CR, STPMIC_REFDDR_MAIN_ENA_Mask);
 
 
 
