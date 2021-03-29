@@ -59,4 +59,11 @@ int stpmic1_get_register_value(uint8_t reg, uint8_t *data_out);
 
 int stpmic1_set_register_value(uint8_t reg, uint8_t data_in);
 
+uint8_t stpmic1_get_turn_on_sr();
+uint8_t stpmic1_get_turn_off_sr();
+uint8_t stpmic1_get_ocp_ldos_sr();
+uint8_t stpmic1_get_ocp_buck_bsw_sr();
+uint8_t stpmic1_get_restart_sr();
+uint8_t stpmic1_main_ctrl_sr();
+
 #endif /* STPMIC1_DRIVER_STPMIC1_H_ */
